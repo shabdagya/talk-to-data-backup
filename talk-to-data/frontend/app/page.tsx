@@ -43,7 +43,8 @@ import {
   Line,
   PieChart,
   Pie,
-  Cell
+  Cell,
+  Legend
 } from "recharts"
 
 // Types
@@ -707,6 +708,24 @@ function AIResponseCard({ msg, blockedColumns, onNewMessage }: { msg: any, block
               <YAxis tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={formatNumber as any} />
               <Tooltip formatter={(value: number) => formatNumber(value)} cursor={{ fill: 'rgba(139, 92, 246, 0.1)' }} contentStyle={{ backgroundColor: "#1a0a2e", borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} />
               <Bar dataKey={chart_config.y_key} fill="#8b5cf6" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        );
+      }
+
+      if (chart_config.type === "grouped_bar" && chart_config.y_keys) {
+        const GROUPED_COLORS = ["#8b5cf6", "#06b6d4", "#f59e0b", "#10b981", "#ef4444", "#ec4899"];
+        return (
+          <ResponsiveContainer width="100%" height={250}>
+            <BarChart data={results} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
+              <XAxis dataKey={chart_config.x_key} tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 11 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={formatNumber as any} />
+              <Tooltip formatter={(value: number) => formatNumber(value)} cursor={{ fill: 'rgba(139, 92, 246, 0.1)' }} contentStyle={{ backgroundColor: "#1a0a2e", borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }} />
+              <Legend wrapperStyle={{ color: 'rgba(255,255,255,0.6)', fontSize: 12 }} />
+              {chart_config.y_keys.map((yKey: string, idx: number) => (
+                <Bar key={yKey} dataKey={yKey} fill={GROUPED_COLORS[idx % GROUPED_COLORS.length]} radius={[4, 4, 0, 0]} />
+              ))}
             </BarChart>
           </ResponsiveContainer>
         );
