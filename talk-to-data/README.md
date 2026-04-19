@@ -127,7 +127,7 @@ uvicorn main:app --reload --port 8000
 ```bash
 cd frontend
 npm install
-npm start
+npm run dev
 ```
 
 > App opens at `http://localhost:3000`
@@ -235,7 +235,7 @@ Powered by **Groq (LLaMA 3.3 70B)** — a sequential chain where each agent has 
 | Component | File | Role |
 |-----------|------|------|
 | 📐 Metric Dictionary | `core/metric_dict.py` | Central repo of business formulas (Revenue, Profit Margin, etc.) — ensures consistent LLM logic |
-| ⚛️ React SPA | `frontend/` | Chat-like interface with data visualizations via Recharts |
+| ⚛️ Next.js App | `frontend/` | Chat-like interface with Shadcn UI components and Recharts visualizations |
 
 ### 🔒 Security Posture
 
@@ -289,7 +289,7 @@ curl http://localhost:8000/health    # Health check
 
 | Layer | Technology |
 |-------|------------|
-| **Frontend** | React, Axios, Recharts, Vanilla CSS |
+| **Frontend** | Next.js, Shadcn UI, Axios, Recharts, Tailwind CSS |
 | **Backend** | Python, FastAPI, Uvicorn |
 | **Database** | SQLite (in-memory, per session) |
 | **Data Processing** | Pandas |
