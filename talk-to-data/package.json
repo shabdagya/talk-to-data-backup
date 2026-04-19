@@ -1,0 +1,10 @@
+{
+  "name": "talk-to-data-root",
+  "version": "1.0.0",
+  "description": "Root entry point mapped to the new Next.js UI",
+  "scripts": {
+    "start": "cd new-ui && npm run dev",
+    "dev": "cd new-ui && npm run dev",
+    "build": "cd new-ui && npm run build"
+  }
+}

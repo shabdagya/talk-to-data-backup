@@ -225,7 +225,9 @@ class PDFGenerator:
         conf_label = report_data.get('confidence_label', 'High')
         conf_color = GREEN if conf_label == 'High' else (AMBER if conf_label == 'Medium' else RED)
         
-        conf_table = Table([[Paragraph(f"<font color='white'>■</font>", ParagraphStyle('C', textColor=conf_color)), Paragraph(f"{conf_label} Confidence ({int(report_data.get('confidence', 0)*100)}%)", self.styles['ReportBody'])]])
+        conf_raw = report_data.get('confidence', 0)
+        conf_pct = int((conf_raw or 0) * 100)
+        conf_table = Table([[Paragraph(f"<font color='white'>■</font>", ParagraphStyle('C', textColor=conf_color)), Paragraph(f"{conf_label} Confidence ({conf_pct}%)", self.styles['ReportBody'])]])
         conf_table.setStyle(TableStyle([('VALIGN', (0,0), (-1,-1), 'MIDDLE')]))
         story.append(conf_table)
         story.append(Spacer(1, 16))

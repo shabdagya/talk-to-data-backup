@@ -79,6 +79,17 @@ RETURN EXACTLY:
                 result = json.loads(response_text.strip())
                 sql = result.get('sql', '')
                 
+                # Guard: LLM sometimes emits {placeholder} template syntax
+                if '{' in sql or '}' in sql:
+                    if attempt == 0:
+                        continue  # retry
+                    return {
+                        "sql": None,
+                        "explanation": None,
+                        "success": False,
+                        "error": "Generated SQL contained template placeholders. Please rephrase your question more specifically."
+                    }
+                
                 safety_check = sql_safety.check(sql)
                 if not safety_check['safe']:
                     return {

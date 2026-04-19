@@ -134,6 +134,11 @@ def _try_cache_route(question: str, profile: dict) -> dict | None:
 
     q = question.lower()
 
+    # ── Detect range queries ───────────────────────────────────────────────
+    # If the user is asking about a range, the fast path cannot handle it.
+    if re.search(r'\b(from|between)\b.*\b(to|and|through|until|-)\b', q):
+        return None
+
     # Must contain at least one statistical intent keyword
     if not any(kw in q for kw in _STAT_KEYWORDS):
         return None
