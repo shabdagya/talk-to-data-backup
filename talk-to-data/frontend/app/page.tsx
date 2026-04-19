@@ -450,9 +450,6 @@ function UploadPage({ onNavigate, onUploadSuccess }: { onNavigate: (screen: Scre
                   className="hidden"
                   onChange={(e) => handleFileSelect(e.target.files?.[0])}
                 />
-                <p className="text-white/30 text-xs mt-4">
-                  Maximum file size: 100MB
-                </p>
               </>
             )}
 
@@ -545,7 +542,7 @@ function UploadPage({ onNavigate, onUploadSuccess }: { onNavigate: (screen: Scre
                 <div>
                   <h3 className="font-bold mb-1">Supported Formats</h3>
                   <p className="text-white/60 text-sm leading-relaxed">
-                    CSV files up to 100MB. Your data never leaves the server at any point.
+                    CSV files supported. Your data never leaves the server at any point.
                   </p>
                 </div>
               </div>
