@@ -1,0 +1,136 @@
+INFO:     Will watch for changes in these directories: ['/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [112610] using WatchFiles
+INFO:     Started server process [112617]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:36790 - "POST /upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39850 - "POST /query HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/uvicorn/protocols/http/httptools_impl.py", line 420, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/main.py", line 265, in query_data
+    clarified = intent_clarifier.clarify(req.question, schema, metric_dict_str, context)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/agents/intent_clarifier.py", line 15, in clarify
+    client = Groq()
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/groq/_client.py", line 79, in __init__
+    raise GroqError(
+        "The api_key client option must be set either by passing api_key to the client or by setting the GROQ_API_KEY environment variable"
+    )
+groq.GroqError: The api_key client option must be set either by passing api_key to the client or by setting the GROQ_API_KEY environment variable
+INFO:     127.0.0.1:39862 - "POST /query HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/uvicorn/protocols/http/httptools_impl.py", line 420, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/main.py", line 265, in query_data
+    clarified = intent_clarifier.clarify(req.question, schema, metric_dict_str, context)
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/agents/intent_clarifier.py", line 15, in clarify
+    client = Groq()
+  File "/home/shabdagya/Documents/talk-to-data-project/talk-to-data/backend/venv/lib64/python3.14/site-packages/groq/_client.py", line 79, in __init__
+    raise GroqError(
+        "The api_key client option must be set either by passing api_key to the client or by setting the GROQ_API_KEY environment variable"
+    )
+groq.GroqError: The api_key client option must be set either by passing api_key to the client or by setting the GROQ_API_KEY environment variable
+INFO:     127.0.0.1:39868 - "GET /conversation/history HTTP/1.1" 200 OK
